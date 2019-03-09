@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<h1>Select Bus</h1>
+<script src = 'db.json'></script>
+<select id="busIds" onchange="displayRoute()">
+    <option>--Select a bus ID--</option>
+</select>
+<div id="busRoute"></div>
+
+<script>
+
+var vehicles = vehicles.vehicles;
+
+var vehicle_ids = vehicles.map(function(item){return item.id});
+var unique_ids  = [];
+
+vehicle_ids.forEach(function(item){
+    if (!unique_ids.includes(item)){
+        unique_ids.push(item);
+    }
+})
+
+var busList = document.getElementById('busIds');
+unique_ids.forEach(function(bus){
+    var opt = document.createElement('option');
+    opt.innerHTML = bus;
+    opt.value = bus;
+    busList.appendChild(opt);
+})
+
+var displayRoute = function(){
+    var busData = [];
+    var busId = document.getElementById("busIds").options[document.getElementById("busIds").selectedIndex].value;
+    console.log(busId);
+    vehicles.forEach(function(bus){
+        if (bus.id === busId){busData.push(bus)};
+})
+    document.getElementById("busRoute").innerHTML = JSON.stringify(busData);
+}
+
+</script>
+
+</html>
