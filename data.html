@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html>
 <h1>Select Bus</h1>
-<script src = 'db.json'></script>
+<script src = 'db.js'></script>
 <select id="busIds" onchange="displayRoute()">
     <option>--Select a bus ID--</option>
 </select>
 <div id="busRoute"></div>
 
 <script>
-
-var vehicles = vehicles.vehicles;
 
 var vehicle_ids = vehicles.map(function(item){return item.id});
 var unique_ids  = [];
