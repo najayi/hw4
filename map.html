@@ -51,19 +51,16 @@ var init = function (busData){
         mapTypeId : google.maps.MapTypeId.ROADMAP
     };
 
-    var div = document.createElement('div');
-    div.id = Math.random(Math.random()*1000000);
-    div.style.width = '10px';
-    div.style.height = '10px';
-    div.style.borderRadius = '50%';
-    div.style.opacity = '50%';
-    div.style.background = 'red';
-
-
     map = new google.maps.Map(document.getElementById('map'), myOptions);
 
     busData.forEach(function(bus){
-        var icon = div;
+        var icon = {
+            path : google.maps.SymbolPath.CIRCLE,
+            fillColor : 'red',
+            fillOpacity : 0.5,
+            scale : 10,
+            strokeOpacity : 0
+        }
         var lat  = bus.latitude;
         var long = bus.longitude;
         var latlng = new google.maps.LatLng(lat,long)
